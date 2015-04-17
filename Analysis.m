@@ -993,7 +993,7 @@ end
             ensembTrial = Trial(tObj.nspikeColl,ensembleCov);
             tc=TrialConfig('all',[],[]); %use all ensembleCov
             tcc = ConfigColl(tc); 
-            fitResults =Analysis.RunAnalysisForNeuron(ensembTrial,neuronNum,tcc,makePlot);
+            fitResults =Analysis.RunAnalysisForNeuron(ensembTrial,neuronNum,tcc,makePlot,'BNLRCG');
         end
         function [fitResults,tcc] = computeHistLag(tObj,neuronNum,windowTimes,CovLabels,Algorithm,batchMode,sampleRate,makePlot,histMinTimes,histMaxTimes)
             % [fitResults,tcc] = computeHistLag(tObj,tObj,neuronNum,windowTimes,CovLabels,sampleRate,makePlot)
