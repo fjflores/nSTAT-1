@@ -824,6 +824,17 @@ classdef SignalObj < handle
             s3=sObj.copySignal;
             s3.data = filtfilt(B,A,s3.data);
         end
+        
+        function s3 = clipSignal( sObj, maxLevel )
+            %s3 = clipsignal( sObj, maxLevel )
+            %Applies a clipping function, such that no value in the sObj is
+            %greater/lesser than maxLevel/-maxLevel.
+            
+            s3 = sObj.copySignal;
+            s3.data = clipsignal( s3.data, maxLevel );
+            
+        end
+        
         function [s1c,s2c] = makeCompatible(s1,s2,holdVals)
             %[s1c,s2c] = makeCompatible(s1,s2,holdVals)
             %returns two signals that copies of the original signals but
