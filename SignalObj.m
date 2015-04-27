@@ -1540,28 +1540,43 @@ classdef SignalObj < handle
                ind = sObj.time(index);
            end
         end
-        function [indices, values] = findPeaks(sObj,type,minDistance)
+        
+        function [ indices, values ] = findPeaks( sObj, type, minDistance )
             %[indices, values] = findPeaks(sObj,type)
             %type:'minima' or 'maxima'
             %indices: indices at which the minima or maxima occur
             %values: values at the minima or maxima
-            if(nargin<3)
-                minDistance = round(sObj.sampleRate*(sObj.maxTime-sObj.minTime)/10);
+            if( nargin < 3 )
+                minDistance = round(...
+                    sObj.sampleRate * ( sObj.maxTime - sObj.minTime ) / 10 );
+                
             end
-            if(nargin<2)
-                type='maxima';
+            
+            if( nargin < 2 )
+                type = 'maxima';
+                
             end
-            values=cell(1,sObj.dimension);
-            indices=cell(1,sObj.dimension);
-            if(strcmp(type,'maxima'))
-                for i=1:sObj.dimension
-                    [values{i},indices{i}] = findpeaks(sObj.data(:,i),'MINPEAKDISTANCE',minDistance);
+            
+            values = cell( 1, sObj.dimension );
+            indices = cell( 1, sObj.dimension );
+            
+            if( strcmp( type, 'maxima' ) )
+                for i = 1 : sObj.dimension
+                    [ values{ i }, indices{ i } ] = findpeaks(...
+                        sObj.data( :, i ),...
+                        'MINPEAKDISTANCE', minDistance );
+                    
                 end
-            elseif(strcmp(type,'minima'))
-                for i=1:sObj.dimension
-                    [values{i},indices{i}] = findpeaks(sObj.data(:,i),'MINPEAKDISTANCE',minDistance);
+                
+            elseif( strcmp( type, 'minima' ) )
+                for i = 1 : sObj.dimension
+                    [ values{ i }, indices{ i } ] = findpeaks(...
+                        sObj.data( :, i ),...
+                        'MINPEAKDISTANCE', minDistance );
                 end
+                
             end
+            
         end
 
         function [indices, values] = findMaxima(sObj)
