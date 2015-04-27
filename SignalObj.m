@@ -1542,10 +1542,17 @@ classdef SignalObj < handle
         end
         
         function [ indices, values ] = findPeaks( sObj, type, param )
-            %[indices, values] = findPeaks(sObj,type)
-            %type:'minima' or 'maxima'
-            %indices: indices at which the minima or maxima occur
-            %values: values at the minima or maxima
+            %[indices, values] = findPeaks(sObj,type,param)
+            %Input:
+            %type:'minima', 'maxima' or 'thresh'.
+            %param: if 'minima' or 'maxima', then it corresponds to the
+            %minimum/maximum distance between peaks. If 'thresh', then it
+            %corresponds to the threshold above which the peaks will be
+            %detected.
+            %Output:
+            %indices: indices at which the events occur
+            %values: values at the event.
+            
             if( nargin < 3 )
                 param = round(...
                     sObj.sampleRate * ( sObj.maxTime - sObj.minTime ) / 10 );
