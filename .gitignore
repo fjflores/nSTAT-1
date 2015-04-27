@@ -10,3 +10,6 @@
 .slx
 .xml
 .md
+data/
+helpfiles/
+slprj/
