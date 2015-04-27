@@ -1541,13 +1541,13 @@ classdef SignalObj < handle
            end
         end
         
-        function [ indices, values ] = findPeaks( sObj, type, minDistance )
+        function [ indices, values ] = findPeaks( sObj, type, param )
             %[indices, values] = findPeaks(sObj,type)
             %type:'minima' or 'maxima'
             %indices: indices at which the minima or maxima occur
             %values: values at the minima or maxima
             if( nargin < 3 )
-                minDistance = round(...
+                param = round(...
                     sObj.sampleRate * ( sObj.maxTime - sObj.minTime ) / 10 );
                 
             end
@@ -1564,7 +1564,7 @@ classdef SignalObj < handle
                 for i = 1 : sObj.dimension
                     [ values{ i }, indices{ i } ] = findpeaks(...
                         sObj.data( :, i ),...
-                        'MINPEAKDISTANCE', minDistance );
+                        'MINPEAKDISTANCE', param );
                     
                 end
                 
@@ -1572,7 +1572,15 @@ classdef SignalObj < handle
                 for i = 1 : sObj.dimension
                     [ values{ i }, indices{ i } ] = findpeaks(...
                         sObj.data( :, i ),...
-                        'MINPEAKDISTANCE', minDistance );
+                        'MINPEAKDISTANCE', param );
+                end
+                
+            elseif( strcmp( type, 'thresh' ) )
+                for i = 1 : sObj.dimension
+                    [ values{ i }, indices{ i } ] = findpeaks(...
+                        sObj.data( :, i ),...
+                        'MinPeakHeight', param );
+                    
                 end
                 
             end
