@@ -1555,11 +1555,11 @@ classdef SignalObj < handle
             indices=cell(1,sObj.dimension);
             if(strcmp(type,'maxima'))
                 for i=1:sObj.dimension
-                    [values{i},indices{i}] = findPeaks(sObj.data(:,i),'MINPEAKDISTANCE',minDistance);
+                    [values{i},indices{i}] = findpeaks(sObj.data(:,i),'MINPEAKDISTANCE',minDistance);
                 end
             elseif(strcmp(type,'minima'))
                 for i=1:sObj.dimension
-                    [values{i},indices{i}] = findPeaks(sObj.data(:,i),'MINPEAKDISTANCE',minDistance);
+                    [values{i},indices{i}] = findpeaks(sObj.data(:,i),'MINPEAKDISTANCE',minDistance);
                 end
             end
         end
