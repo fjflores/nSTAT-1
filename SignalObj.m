@@ -153,7 +153,7 @@ classdef SignalObj < handle
             if(nargin<8)
                 plotProps = cell(s.dimension,1);
             end
-            deltaT = mean(diff(s.time)); %To avoid round-off error, when computing samplerate
+            deltaT = round(1000*mean(diff(s.time)))/1000; %To avoid round-off error, when computing samplerate
             s.sampleRate = 1/deltaT; 
             s.origSampleRate = s.sampleRate;
             s.name=name;
