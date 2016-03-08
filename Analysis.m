@@ -284,7 +284,7 @@ end
                         end
                     elseif(batchMode==1)
                         neuronNames=neuronNumber; % This is an index of names in the batchMode case
-                        fprintf(strcat('Analyzing Configuration #',num2str(i),': Neuron #',num2str(neuronNames)));
+                        fprintf(strcat('Analyzing Configuration #',num2str(i),': Neuron #',neuronNames{ 1 }));
                         parfor j=1:numNeurons
 
                             %clear tempLabels;
