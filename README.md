@@ -12,7 +12,7 @@ Although created with neural signal processing in mind, nSTAT can be used as a g
 
 Like all open-source projects, nSTAT will benefit from your involvement, suggestions and contributions. This platform is intended as a repository for extensions to the toolbox based on your code contributions as well as for flagging and tracking open issues.
 
-The current official version of nSTAT can be downloaded from https://github.com/iahncajigas/nSTAT. However, this fork contains improvements that makes it amenable to use in newee versions of Matlab.
+The current official version of nSTAT can be downloaded from https://github.com/iahncajigas/nSTAT . However, this fork contains changes that enables the toolbox to run in newer versions of Matlab.
 
 For mathematical and programmatic details of the toolbox, see:
 
@@ -22,7 +22,8 @@ If you use nSTAT in your work, please remember to cite the above paper in any pu
 
 nSTAT is licensed under the GPL v2 Open Source License.
 
-%% Installation Notes %%
+Installation Notes
+------------------
 Authors: 
 Iahn Cajigas and Wasim Malik
 Massachusetts Institute of Technology
@@ -43,12 +44,14 @@ nSTAT should now appear along with all other installed toolboxes in the
 matlab help browser.
 
 
-% UPDATES %
+UPDATES
+-------
 The most up-to-date version of nSTAT source code can be obtained from the 
 subversion repository at https://code.google.com/p/nstat-for-matlab/
 
 
-% CITATION %
+CITATION
+--------
 If you use nSTAT in your work, please remember to cite the following paper
 in any publications:
 
@@ -57,7 +60,8 @@ in any publications:
     211(2): 245?264, Nov. 2012
 
 
-% LICENSE INFORMATION %
+LICENSE INFORMATION
+-------------------
 nSTAT v1 Copyright (C) 2012 Masschusetts Institute of Technology
 Cajigas, I, Malik, WQ, Brown, EN
 This program is free software; you can redistribute it and/or 
@@ -74,21 +78,14 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software Foundation, 
 Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
-%% Additional files
+**External files:**
 Library files: zernike.zip, fixPSlinestyle.m, xticklabel_rotate.m were 
 obtained from http://www.mathworks.com/matlabcentral and are subject to 
 the terms and conditions of the BSD 2-Clause license located at
 http://opensource.org/licenses/bsd-license.php. The respective authors 
-reserve copyrights on their original software. 
+reserve copyrights on their original software.
 
-%% Additional files
-Library files: zernike.zip, fixPSlinestyle.m, xticklabel_rotate.m were 
-obtained from http://www.mathworks.com/matlabcentral and are subject to 
-the terms and conditions of the BSD 2-Clause license located at
-http://opensource.org/licenses/bsd-license.php. The respective authors 
-reserve copyrights on their original software. 
-
-Links:
+**Links:**
 zernike polynomials
     http://www.mathworks.com/matlabcentral/fileexchange/7687-zernike-polynomials
 fixPSlinstyle 
