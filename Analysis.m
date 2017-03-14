@@ -98,9 +98,21 @@ end
             for i=1:configColl.numConfigs
                 configColl.setConfig(tObj,i);
 %                 fprintf(strcat('Analyzing Configuration #',num2str(i)));
-                pools = matlabpool('size');
-                if(pools==0)
-                    if(batchMode==0)
+
+                % Check matlab version. I think that from 2014 onwards, the
+                % command to start the paralell pool is parpool.
+                if ~isempty( regexp( version, 'R201[4-9]' ) )
+                    poolObj = parpool;
+                    pools = poolObj.NumWorkers;
+                    
+                else
+                    % If matlab version < 2014, use old style command.
+                    pools = matlabpool( 'size' );
+                    
+                end
+                    
+                if pools == 0 
+                    if batchMode == 0
                         fprintf(strcat('Analyzing Configuration #',num2str(i),': Neuron #'));
                         for j=1:numNeurons
         %                         fprintf(strcat('Analyzing Configuration #',num2str(i),': Neuron #',num2str(neuronNumber(j))));
