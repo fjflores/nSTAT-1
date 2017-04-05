@@ -79,8 +79,8 @@ results.plotResults;
 
 %% History Effect
 % Determine the best history effect model using AIC, BIC, and KS statistic
-sampleRate=1000;
-delta=1/sampleRate*1; 
+sampleRate = 1000;
+delta = 1 / sampleRate*1; 
 maxWindow=1; numWindows=30;
 windowTimes =unique(round([0 logspace(log10(delta),...
     log10(maxWindow),numWindows)]*sampleRate)./sampleRate);
