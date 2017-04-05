@@ -101,16 +101,26 @@ end
 
                 % Check matlab version. I think that from 2014 onwards, the
                 % command to start the paralell pool is parpool.
-                if ~isempty( regexp( version, 'R201[4-9]' ) )
-                    poolObj = parpool;
-                    pools = poolObj.NumWorkers;
+                if ~isempty( regexp( version, 'R201[4-9]' ) ) & numNeurons > 4
+                    poolObj = gcp( 'nocreate' );
+                    if isempty( poolObj )
+                        poolObj = parpool;
+                        pools = poolObj.NumWorkers;
+                        
+                    else
+                        pools = poolObj.NumWorkers;
+                        
+                    end
                     
-                else
+                elseif isempty( regexp( version, 'R201[4-9]' ) )
                     % If matlab version < 2014, use old style command.
                     pools = matlabpool( 'size' );
                     
-                end
+                else
+                    pools = 0; % no paralell needed.
                     
+                end
+                   
                 if pools == 0 
                     if batchMode == 0
                         fprintf(strcat('Analyzing Configuration #',num2str(i),': Neuron #'));
