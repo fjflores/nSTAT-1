@@ -8,6 +8,7 @@
 *.slx
 *.zip
 *.png
+*.orig
 data/
 helpfiles/
 slprj/
