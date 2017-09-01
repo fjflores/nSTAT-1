@@ -782,7 +782,7 @@ classdef SignalObj < handle
                     end
                 else
                     if(~strcmp(sObj.dataLabels{i},''))
-                        s3.dataLabels{i}= strjoin(['\frac{d}{' denomstr '}' s3.dataLabels{i}]);
+                        s3.dataLabels{i}= strjoin({'\frac{d}{' denomstr '}' s3.dataLabels{i}});
                     end
                 end
             end
