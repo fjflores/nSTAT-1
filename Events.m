@@ -8,9 +8,9 @@ classdef Events
 % eventTimes: a vector of times at which certain events occur.
 % eventLabels: a cell array of strings containing the names of each
 %              of the events indicated by eventTimes.
-% eventColor: strings indicating the color for this event. Same as
-%             colors strings in matlab's standard plot routine. If not
-%             specified, default is red.
+% eventColor: strings or RGB vector indicating the color for this event. 
+%             Strings are same as matlab's standard plot routine. If
+%             not specified, default is red.
 %
 % The length of eventTimes and eventLabels must match for an Events
 % object to be successfully created.
@@ -84,7 +84,7 @@ classdef Events
                     times = repmat(EObj.eventTimes,[2 1]);
                     y =  [v(3); v(4)]*ones(1,length(EObj.eventTimes));
                     hold on;
-                    h=plot(handle(j),times,y,colorString,'LineWidth',4);
+                    h=plot(handle(j),times,y,'Color',colorString,'LineWidth',4);
                     %tcolor(1,1,1:3) = [1 0 0];
 %                     p=patch(times,y,colorString);%'FaceAlpha',.7,'EdgeAlpha',0)
 %                     set(p,'facecolor',colorString,'edgecolor','none');
