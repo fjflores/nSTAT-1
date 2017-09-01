@@ -1,0 +1,2 @@
+Issues:
+- When plotting history, the y-label is not correct, and issues a warning.
