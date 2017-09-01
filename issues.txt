@@ -1,2 +1,10 @@
-Issues:
+Issues with examples:
 - When plotting history, the y-label is not correct, and issues a warning.
+- Simulate PP by thinning has a problem in the axis 
+    - v=axis;
+    - axis([0 Tmax/4 v(3) v(4)]);
+- Analysis.GLMFit
+    - Only 1 worker is being used (may be because of one neuron?).
+    - Warning: Weights are ill-conditioned.   Data may be badly scaled, or
+    the link function may be inappropriate. Why is this?
+
