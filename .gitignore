@@ -11,4 +11,6 @@
 *.orig
 data/
 helpfiles/
+helpfiles/helpsearch/
+helpfiles/helpsearch-v3/
 slprj/
