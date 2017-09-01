@@ -153,9 +153,6 @@ classdef SignalObj < handle
             if(nargin<8)
                 plotProps = cell(s.dimension,1);
             end
-<<<<<<< HEAD
-            deltaT = round(1e6*mean(diff(s.time)))/1e6; %To avoid round-off error, when computing samplerate
-=======
             deltaT=mean(diff(s.time));
             if(isnan(deltaT))%diff not well defined 
                 deltaT=0.001;
@@ -163,7 +160,6 @@ classdef SignalObj < handle
             precision =ceil(log10(1/deltaT));
             deltaT = roundn(deltaT,-precision);             
 %             deltaT = roundn(mean(diff(s.time)),-3); %To avoid round-off error, when computing samplerate
->>>>>>> iahn/master
             s.sampleRate = 1/deltaT; 
             s.origSampleRate = s.sampleRate;
             s.name=name;
@@ -1625,25 +1621,7 @@ classdef SignalObj < handle
                 type = 'maxima';
                 
             end
-<<<<<<< HEAD
-            
-            values = cell( 1, sObj.dimension );
-            indices = cell( 1, sObj.dimension );
-            
-            if( strcmp( type, 'maxima' ) )
-                for i = 1 : sObj.dimension
-                    [ values{ i }, indices{ i } ] = findpeaks(...
-                        sObj.data( :, i ),...
-                        'MINPEAKDISTANCE', param );
-                    
-                end
-                
-            elseif( strcmp( type, 'minima' ) )
-                for i = 1 : sObj.dimension
-                    [ values{ i }, indices{ i } ] = findpeaks(...
-                        sObj.data( :, i ),...
-                        'MINPEAKDISTANCE', param );
-=======
+
             values=cell(1,sObj.dimension);
             indices=cell(1,sObj.dimension);
             if(strcmp(type,'maxima'))
@@ -1653,7 +1631,6 @@ classdef SignalObj < handle
             elseif(strcmp(type,'minima'))
                 for i=1:sObj.dimension
                     [values{i},indices{i}] = findpeaks(sObj.data(:,i),'MINPEAKDISTANCE',minDistance);
->>>>>>> iahn/master
                 end
                 
             elseif( strcmp( type, 'thresh' ) )

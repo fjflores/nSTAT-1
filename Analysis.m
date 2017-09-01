@@ -99,17 +99,8 @@ end
             for i=1:configColl.numConfigs
                 configColl.setConfig(tObj,i);
 %                 fprintf(strcat('Analyzing Configuration #',num2str(i)));
-<<<<<<< HEAD
                 clustProfile = parcluster( 'local' );
                 pools = clustProfile.NumWorkers;
-=======
-                pool = gcp('nocreate');
-                if(isempty(pool))
-                    pools = 0;
-                else
-                    pools = pool.NumWorkers;
-                end%matlabpool('size');
->>>>>>> iahn/master
                 if(pools==0)
                     if(batchMode==0)
                         fprintf(strcat('Analyzing Configuration #',num2str(i),': Neuron #'));
