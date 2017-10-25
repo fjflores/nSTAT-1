@@ -9,8 +9,11 @@
 *.zip
 *.png
 *.orig
+*.cfe
+*.gen
 data/
 helpfiles/
 helpfiles/helpsearch/
 helpfiles/helpsearch-v3/
 slprj/
+
