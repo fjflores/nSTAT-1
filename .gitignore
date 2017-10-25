@@ -9,8 +9,8 @@
 *.zip
 *.png
 *.orig
-*.cfe
-*.gen
+helpfiles/helpsearch-v3/*.cfe
+helpfiles/helpsearch-v3/*.gen
 data/
 helpfiles/
 helpfiles/helpsearch/
