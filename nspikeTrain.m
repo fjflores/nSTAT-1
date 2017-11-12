@@ -897,7 +897,8 @@ classdef nspikeTrain < handle
             spikes =  ([-dHeight/2; +dHeight/2]+yOffset)*ones(1,length(nstObj.spikeTimes));
             %h = figure(currentHandle);
             hold on;
-            h=plot(currentHandle,time,spikes,'k');
+            grey = [ 99,99,99 ] ./ 255;
+            h = plot( currentHandle, time, spikes, 'color', grey );
             
             if(nargin==1) %Only plot labels if being plotted separately
                 sig       = nstObj.getSigRep;
