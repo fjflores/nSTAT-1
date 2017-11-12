@@ -1,6 +1,7 @@
 # Folders to ignore
 .DS_Store
-helpsearch*
+./helpfiles/helpsearch*
+./helpfiles/helpsearch-v3/
 
 # File extensions to ignore
 *.svn
