@@ -79,44 +79,47 @@ results.plotResults;
 
 %% History Effect
 % Determine the best history effect model using AIC, BIC, and KS statistic
-sampleRate=1000;
-delta=1/sampleRate*1; 
+sampleRate = 1000;
+delta = 1 / sampleRate*1; 
 maxWindow=1; numWindows=30;
 windowTimes =unique(round([0 logspace(log10(delta),...
     log10(maxWindow),numWindows)]*sampleRate)./sampleRate);
 results =Analysis.computeHistLagForAll(trial,windowTimes,...
     {{'Baseline','constant'},{'Stimulus','stim'}},'BNLRCG',0,sampleRate,0);
 
-KSind = find(results{1}.KSStats.ks_stat == min(results{1}.KSStats.ks_stat));
-AICind = find((results{1}.AIC(2:end)-results{1}.AIC(1))== ...
-               min(results{1}.AIC(2:end)-results{1}.AIC(1)));
-BICind = find((results{1}.BIC(2:end)-results{1}.BIC(1))== ...
-               min(results{1}.BIC(2:end)-results{1}.BIC(1)));
-if(AICind==1)
-    AICind=inf; 
-end
-if(BICind==1)
-    BICind=inf; %sometime BIC is non-decreasing and the index would be 1
-end
-windowIndex = min([KSind,AICind,BICind]) %use the minimum order model
-Summary = FitResSummary(results);
-Summary.plotSummary;
-
-
-clear c;
-if(windowIndex>1)
-    selfHist = windowTimes(1:windowIndex);
-else
-    selfHist = [];
-end
-NeighborHist = []; sampleRate = 1000; 
+% KSind = find(results{1}.KSStats.ks_stat == min(results{1}.KSStats.ks_stat));
+% AICind = find((results{1}.AIC(2:end)-results{1}.AIC(1))== ...
+%                min(results{1}.AIC(2:end)-results{1}.AIC(1)));
+% BICind = find((results{1}.BIC(2:end)-results{1}.BIC(1))== ...
+%                min(results{1}.BIC(2:end)-results{1}.BIC(1)));
+% if(AICind==1)
+%     AICind=inf; 
+% end
+% if(BICind==1)
+%     BICind=inf; %sometime BIC is non-decreasing and the index would be 1
+% end
+% windowIndex = min([KSind,AICind,BICind]) %use the minimum order model
+% Summary = FitResSummary(results);
+% Summary.plotSummary;
+% 
+% 
+% clear c;
+% if(windowIndex>1)
+%     selfHist = windowTimes(1:windowIndex);
+% else
+%     selfHist = [];
+% end
+% NeighborHist = []; sampleRate = 1000; 
 %%
 figure;
 x=1:length(windowTimes);
-subplot(3,1,1); plot(x,results{1}.KSStats.ks_stat,'.'); axis tight; hold on;
+subplot(3,1,1); 
+plot(x,results{1}.KSStats.ks_stat,'.'); 
+axis tight; 
+hold on;
 plot(x(windowIndex),results{1}.KSStats.ks_stat(windowIndex),'r*');
 
- set(gca,'xtick',[]); 
+set(gca,'xtick',[]); 
 ylabel('KS Statistic'); 
 dAIC = results{1}.AIC-results{1}.AIC(1);
 subplot(3,1,2); plot(x,dAIC,'.');

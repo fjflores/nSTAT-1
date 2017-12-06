@@ -1256,7 +1256,22 @@ classdef SignalObj < handle
              for i=1:s1c.dimension
                  for j=1:s2c.dimension
                      sum = sum+1;
-                     dataLabels{sum} = strcat('corr(',s1c.dataLabels{i},',',s2c.dataLabels{j}, ']');
+                     if iscell( s1c.dataLabels )
+                        dataLabels{ sum } = strcat(...
+                            'corr(',...
+                            s1c.dataLabels{ i },...
+                            ',',...
+                            s2c.dataLabels{ j }, ')' );
+                     
+                     else
+                         dataLabels{ sum } = strcat(...
+                             'corr(',...
+                             s1c.dataLabels,...
+                             ',',...
+                             s2c.dataLabels,...
+                             ')');
+                         
+                     end
                  end
              end
              
@@ -1292,7 +1307,22 @@ classdef SignalObj < handle
              for i=1:s1c.dimension
                  for j=1:s2c.dimension
                      sum = sum+1;
-                     dataLabels{sum} = strcat('cov(',s1c.dataLabels{i},',',s2c.dataLabels{j}, ']');
+                     if iscell( s1c.dataLabels )
+                        dataLabels{ sum } = strcat(...
+                            'cov(',...
+                            s1c.dataLabels{ i },...
+                            ',',...
+                            s2c.dataLabels{ j }, ')' );
+                     
+                     else
+                         dataLabels{ sum } = strcat(...
+                             'cov(',...
+                             s1c.dataLabels,...
+                             ',',...
+                             s2c.dataLabels,...
+                             ')');
+                         
+                     end
                  end
              end
              
@@ -2088,34 +2118,43 @@ classdef SignalObj < handle
 %              set(gcf,'CurrentAxes',handle);
             warning off;
             if(~strcmp(sObj.xunits,''))
-                xunitsStr=strcat('\; [',sObj.xunits,']'); %\; is a large space in latex
+                xunitsStr = strcat( '~[', sObj.xunits, ']' ); %\; is a large space in latex
+            
             else
-                xunitsStr='';
+                xunitsStr = '';
+                
             end
             
             if(~strcmp(sObj.yunits,''))
-                yunitsStr=strcat('\; [',sObj.yunits,']');
+                yunitsStr = strcat('~[',sObj.yunits,']');
+                
             else
-                yunitsStr='';
+                yunitsStr = '';
+                
             end
             
-            if(strcmp(sObj.xlabelval,''))
-                xlabel(strcat('$$',xunitsStr,'$$'),'Interpreter','latex');
+            if ( strcmp( sObj.xlabelval, '' ) )
+                xlabel(...
+                    strcat( '$', xunitsStr, '$' ),...
+                    'Interpreter', 'latex' );
                 
             else                
-%                 strcat(['$$' sObj.xlabelval xunitsStr '$$'])
-                xlabel(strcat('$$',[sObj.xlabelval xunitsStr],'$$'),'Interpreter','latex');
+                xlabel(...
+                    strcat( '$', [sObj.xlabelval xunitsStr], '$' ),...
+                    'Interpreter', 'latex' );
                 
             end
+            
             if(~strcmp(sObj.name,''))
                 if(~strcmp(yunitsStr,''))
-                    %strcat('$$',sObj.name,yunitsStr,'$$')
-                    ylabel(strcat('$$',[sObj.name yunitsStr],'$$'),'Interpreter','latex');
+                    ylabel(...
+                        strcat( '$', [ sObj.name yunitsStr ], '$' ),...
+                        'Interpreter', 'latex' );
                     
                 else
-                     
-                    ylabel(strcat('$$',sObj.name,'$$'),'Interpreter','latex');
-                    %ylabel(sObj.name,'Interpreter','none');
+                    ylabel(...
+                        strcat( '$', sObj.name, '$' ),...
+                        'Interpreter', 'latex' );
                     
                 end
             end

@@ -1203,7 +1203,7 @@ classdef nstColl < handle
                     end
                 end
             end
-            xlabel('$$ time [s] $$','Interpreter','latex');            
+            xlabel( 'time (s)') ;            
             set(gca,'YTick',yOffset);
             set(gca,'YTickLabel',yticklabels);
             axis tight;

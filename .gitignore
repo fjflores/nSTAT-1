@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.DS_Store
 *.svn
 *.mat
@@ -17,3 +18,13 @@ helpfiles/helpsearch/
 helpfiles/helpsearch-v3/
 slprj/
 
+=======
+# Folders to ignore
+.DS_Store
+./helpfiles/helpsearch*
+./helpfiles/helpsearch-v3/
+
+# File extensions to ignore
+*.svn
+*.asv
+>>>>>>> fb784ae1f07bab8f89117ad471e248e44ebe8872

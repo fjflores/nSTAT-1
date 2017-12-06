@@ -12,7 +12,7 @@ Although created with neural signal processing in mind, nSTAT can be used as a g
 
 Like all open-source projects, nSTAT will benefit from your involvement, suggestions and contributions. This platform is intended as a repository for extensions to the toolbox based on your code contributions as well as for flagging and tracking open issues.
 
-The current release version of nSTAT can be downloaded from http://www.neurostat.mit.edu/nstat .
+The current official version of nSTAT can be downloaded from https://github.com/iahncajigas/nSTAT . However, this fork contains changes that enables the toolbox to run in newer versions of Matlab.
 
 For mathematical and programmatic details of the toolbox, see:
 
@@ -20,7 +20,9 @@ Cajigas I, Malik WQ, Brown EN. nSTAT: Open-source neural spike train analysis to
 http://doi.org/10.1016/j.jneumeth.2012.08.009
 
 If you use nSTAT in your work, please remember to cite the above paper in any publications.
+
 nSTAT is protected by the GPL v2 Open Source License.
 
 The code respository for nSTAT is hosted on GitHub at https://github.com/iahncajigas/nSTAT. 
 You can download the example data file from the paper at: https://doi.org/10.6084/m9.figshare.4834640
+

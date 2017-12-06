@@ -101,8 +101,28 @@ end
 %                 fprintf(strcat('Analyzing Configuration #',num2str(i)));
                 clustProfile = parcluster( 'local' );
                 pools = clustProfile.NumWorkers;
-                if(pools==0)
-                    if(batchMode==0)
+                if ~isempty( regexp( version, 'R201[4-9]' ) ) & numNeurons > 4
+                    poolObj = gcp( 'nocreate' );
+                    if isempty( poolObj )
+                        poolObj = parpool;
+                        pools = poolObj.NumWorkers;
+                        
+                    else
+                        pools = poolObj.NumWorkers;
+                        
+                    end
+                    
+                elseif isempty( regexp( version, 'R201[4-9]' ) )
+                    % If matlab version < 2014, use old style command.
+                    pools = matlabpool( 'size' );
+                    
+                else
+                    pools = 0; % no paralell needed.
+                    
+                end
+                   
+                if pools == 0 
+                    if batchMode == 0
                         fprintf(strcat('Analyzing Configuration #',num2str(i),': Neuron #'));
                         for j=1:numNeurons
         %                         fprintf(strcat('Analyzing Configuration #',num2str(i),': Neuron #',num2str(neuronNumber(j))));
@@ -1005,7 +1025,7 @@ end
             ensembTrial = Trial(tObj.nspikeColl,ensembleCov);
             tc=TrialConfig('all',[],[]); %use all ensembleCov
             tcc = ConfigColl(tc); 
-            fitResults =Analysis.RunAnalysisForNeuron(ensembTrial,neuronNum,tcc,makePlot,'BNLRCG');
+            fitResults =Analysis.RunAnalysisForNeuron(ensembTrial,neuronNum,tcc,makePlot);
         end
         
         function [fitResults,gammaMat,phiMat,devianceMat,sigMat] = computeGrangerCausalityMatrix(tObj, Algorithm,confidenceInterval, batchMode)
